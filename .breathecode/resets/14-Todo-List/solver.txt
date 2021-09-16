@@ -1,0 +1,37 @@
+// Your code here
+let task= document.getElementById("addToDo").value;
+let list = [...document.querySelectorAll('li')];
+
+deleteTask = function (event) {
+    for (let li of list) {
+        li.addEventListener('click', function() {
+          this.parentNode.removeChild(this);
+        })
+      }    
+};
+
+function addTask(toDo){
+    console.log(toDo);
+    let listDiv = document.querySelector("ul");
+    let newToDo = document.createElement("li");
+    let text = document.createTextNode(toDo);
+    newToDo.appendChild(text);
+    listDiv.appendChild(newToDo);
+}
+
+window.onchange = function(){
+    
+    if (task!=null){
+        task= document.getElementById("addToDo").value;
+        addTask(task)
+	list = [...document.querySelectorAll('li')];
+    }
+}
+
+window.onclick=function(){
+ deleteTask();
+}
+
+/* if (13 == e.keyCode) {
+    ... do whatever ...
+ } */

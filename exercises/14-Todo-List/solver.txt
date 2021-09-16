@@ -1,0 +1,51 @@
+// Your code here
+// Your code here
+// Your code here
+let task = document.getElementById("addToDo").value;
+let list = [...document.querySelectorAll("li")];
+
+function deleteTask(event) {
+	for (let li of list) {
+		li.addEventListener("click", function() {
+			this.parentNode.removeChild(this);
+		});
+	}
+}
+
+function addTask(toDo) {
+	console.log(toDo);
+	let listDiv = document.querySelector("ul");
+	let newToDo = document.createElement("li");
+	let iconDiv = document.createElement("i");
+	let spanDiv = document.createElement("span");
+	let text = document.createTextNode(toDo);
+
+	iconDiv.className = "fa fa-trash";
+	spanDiv.appendChild(iconDiv);
+	newToDo.appendChild(spanDiv);
+
+	newToDo.appendChild(text);
+	listDiv.appendChild(newToDo);
+	console.log(listDiv);
+}
+
+/*window.onchange = function() {
+	if (task != null) {
+		task = document.getElementById("addToDo").value;
+		addTask(task);
+		list = [...document.querySelectorAll("li")];
+	}
+}; */
+
+window.onclick = function() {
+	deleteTask();
+};
+
+document.getElementById("addToDo").addEventListener("keypress", function(e) {
+	if (e.key == "Enter") {
+		task = document.getElementById("addToDo").value;
+		addTask(task);
+		list = [...document.querySelectorAll("li")];
+	}
+});
+
